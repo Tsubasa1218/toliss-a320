@@ -1,63 +1,62 @@
 export type Command = {
-    id: number;
-    name: string;
-    description: string;
+  id: number;
+  name: string;
+  description: string;
 };
 
-export const PEDESTAL_ECP_COMMANDS = new Map<string, number | null>(
-    [
-        ["AirbusFBW/ECP/SelectEnginePage", null],
-        ["AirbusFBW/ECP/SelectBleedPage", null],
-        ["AirbusFBW/ECP/SelectPressPage", null],
-        ["AirbusFBW/ECP/SelectElecACPage", null],
-        ["AirbusFBW/ECP/SelectHydraulicPage", null],
-        ["AirbusFBW/ECP/SelectFuelPage", null],
-        ["AirbusFBW/ECP/SelectAPUPage", null],
-        ["AirbusFBW/ECP/SelectConditionPage", null],
-        ["AirbusFBW/ECP/SelectDoorOxyPage", null],
-        ["AirbusFBW/ECP/SelectWheelPage", null],
-        ["AirbusFBW/ECP/SelectFlightControlPage", null],
-        ["AirbusFBW/ECP/SelectStatusPage", null],
-        ["AirbusFBW/ECP/CaptainClear", null],
-        ["AirbusFBW/ECP/CopilotClear", null],
+export const PEDESTAL_ECP_COMMANDS = [
+  //   "AirbusFBW/ECP/SelectEnginePage",
+  //   "AirbusFBW/ECP/SelectBleedPage",
+  //   "AirbusFBW/ECP/SelectPressPage",
+  //   "AirbusFBW/ECP/SelectElecACPage",
+  //   "AirbusFBW/ECP/SelectHydraulicPage",
+  //   "AirbusFBW/ECP/SelectFuelPage",
+  //   "AirbusFBW/ECP/SelectAPUPage",
+  //   "AirbusFBW/ECP/SelectConditionPage",
+  //   "AirbusFBW/ECP/SelectDoorOxyPage",
+  //   "AirbusFBW/ECP/SelectWheelPage",
+  //   "AirbusFBW/ECP/SelectFlightControlPage",
+  //   "AirbusFBW/ECP/SelectStatusPage",
+  //   "AirbusFBW/ECP/CaptainClear",
+  //   "AirbusFBW/ECP/CopilotClear",
 
-        ["AirbusFBW/EmerCancel", null],
-        ["AirbusFBW/TOConfigPress", null],
-        ["AirbusFBW/ECAMAll", null],
-        ["AirbusFBW/ECAMRecall", null],
-    ],
-);
+  //   "AirbusFBW/EmerCancel",
+  //   "AirbusFBW/TOConfigPress",
+  //   "AirbusFBW/ECAMAll",
+  //   "AirbusFBW/ECAMRecall",
+] as const;
 
-export const MPI_TERR_ON_ND_COMMANDS = new Map<string, number | null>(
-    [
-        ["toliss_airbus/dispcommands/TerrOnND1Toggle", null],
-        ["toliss_airbus/dispcommands/TerrOnND2Toggle", null],
-    ],
-);
+export const MPI_TERR_ON_ND_COMMANDS = [
+  "toliss_airbus/dispcommands/TerrOnND1Toggle",
+  "toliss_airbus/dispcommands/TerrOnND2Toggle",
+] as const;
 
-export const MPI_AUTO_BRK_COMMANDS = new Map<string, number | null>(
-    [
-        ["AirbusFBW/AbrkLo", null],
-        ["AirbusFBW/AbrkMed", null],
-        ["AirbusFBW/AbrkMax", null],
-    ],
-);
+export const MPI_AUTO_BRK_COMMANDS = [
+  "AirbusFBW/AbrkLo",
+  "AirbusFBW/AbrkMed",
+  "AirbusFBW/AbrkMax",
+] as const;
 
-export const MPI_LDG_GEAR_COMMANDS = new Map<string, number | null>(
-    [
-        /* Verify these are valid for Toliss */
-        ["sim/flight_controls/landing_gear_down", null],
-        ["sim/flight_controls/landing_gear_up", null],
-    ],
-);
+export const MPI_LDG_GEAR_COMMANDS = [
+  /* Verify these are valid for Toliss */
+  //   "sim/flight_controls/landing_gear_down",
+  //   "sim/flight_controls/landing_gear_up",
+] as const;
 
-export const MPI_BRK_FAN_COMMANDS = new Map<string, number | null>(
-    [
-        ["toliss_airbus/gear/brake_fan", null],
-    ],
-);
-export const MPI_NW_STEERING_COMMANDS = new Map<string, number | null>(
-    [
-        ["sim/flight_controls/nwheel_steer_toggle", null],
-    ],
-);
+export const MPI_BRK_FAN_COMMANDS = [
+  //   "toliss_airbus/gear/brake_fan",
+] as const;
+
+export const MPI_NW_STEERING_COMMANDS = [
+  //   "sim/flight_controls/nwheel_steer_toggle",
+] as const;
+
+export const TARGET_COMMANDS = [
+  ...PEDESTAL_ECP_COMMANDS,
+  ...MPI_TERR_ON_ND_COMMANDS,
+  ...MPI_AUTO_BRK_COMMANDS,
+  ...MPI_LDG_GEAR_COMMANDS,
+  ...MPI_BRK_FAN_COMMANDS,
+  ...MPI_NW_STEERING_COMMANDS,
+] as const;
+export const TARGET_COMMANDS_SET = new Set<string>(TARGET_COMMANDS);

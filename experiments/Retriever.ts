@@ -1,29 +1,74 @@
-import { ChatOllama } from "@langchain/ollama";
-import { ChatPromptTemplate } from "@langchain/core/prompts";
+import { Document } from "@langchain/core/documents";
+import { MemoryVectorStore } from "langchain/vectorstores/memory";
+import { OllamaEmbeddings } from "@langchain/ollama";
 
-async function main() {
-    const datarefsFile = await Deno.readTextFile("./experiments/datarefs.json");
-    const minified = JSON.stringify(JSON.parse(datarefsFile));
+import commandsJson from "./commands.json" with { type: "json" };
+import datarefsJson from "./datarefs.json" with { type: "json" };
 
-    const model = new ChatOllama({
-        model: "qwq", // Default value.
-    });
+async function main_commands() {
+  const commandDocs = commandsJson.data.map((data) =>
+    new Document({
+      pageContent: data.description,
+      id: data.id.toString(),
+      metadata: {
+        name: data.name,
+      },
+    })
+  );
 
-    const prompt = ChatPromptTemplate.fromMessages([
-        [
-            "system",
-            "You are an assistant required to look for information from a JSON file. You are required to return the IDs of the objects that are more likely to meet the request from the user. Here is the file: ```json{context}```",
-        ],
-        ["human", "What objects correspond to the Auto brake settings?"],
-    ]);
+  const embeddings = new OllamaEmbeddings({
+    model: "nomic-embed-text",
+  });
 
-    const chain = prompt.pipe(model);
+  const vectorStore = new MemoryVectorStore(embeddings);
 
-    const result = await chain.invoke({
-        context: minified,
-    });
+  await vectorStore.addDocuments(commandDocs);
 
-    console.log(result);
+  const retriever = vectorStore.asRetriever({
+    searchType: "similarity",
+    k: 10,
+  });
+
+  const result = await retriever.batch([
+    "Commands related to the ECAM",
+  ]);
+
+  console.log(result);
 }
 
-main();
+async function main_datarefs() {
+  const commandDocs = datarefsJson.data.map((data) =>
+    new Document({
+      pageContent: data.name,
+      id: data.id.toString(),
+      metadata: {
+        is_writable: data.is_writable,
+        value_type: data.value_type,
+      },
+    })
+  );
+
+  const embeddings = new OllamaEmbeddings({
+    model: "nomic-embed-text",
+  });
+
+  const vectorStore = new MemoryVectorStore(embeddings);
+
+  await vectorStore.addDocuments(commandDocs);
+
+  const retriever = vectorStore.asRetriever({
+    searchType: "similarity",
+    k: 10,
+  });
+
+  const result = await retriever.batch([
+    "Airbus ECAM Pages",
+    "Airbus ECP",
+    "Airbus Active ECAM",
+  ]);
+
+  console.log(result);
+}
+
+// main_commands();
+main_datarefs();

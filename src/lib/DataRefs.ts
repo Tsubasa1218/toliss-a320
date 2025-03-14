@@ -1,44 +1,29 @@
 export type DataRef = {
-    id: number;
-    name: string;
-    value_type:
-        | "float"
-        | "double"
-        | "int"
-        | "int_array"
-        | "float_array"
-        | "data"; // Base64
+  id: number;
+  name: string;
+  value_type:
+    | "float"
+    | "double"
+    | "int"
+    | "int_array"
+    | "float_array"
+    | "data"; // Base64
 };
 
-export const MPI_TERR_ON_ND_REFS = new Map<string, number | null>(
-    [
-        ["AirbusFBW/TerrainSelectedND1", null],
-        ["AirbusFBW/TerrainSelectedND2", null],
-    ],
-);
+export const TARGET_DATAREFS = [
+  // "AirbusFBW/ECPAvail", // This is not the one we want
 
-export const MPI_AUTO_BRK_REFS = new Map<string, number | null>(
-    [
-        ["AirbusFBW/ABrkLoButtonAnim", null],
-        ["AirbusFBW/ABrkMedButtonAnim", null],
-        ["AirbusFBW/ABrkMaxButtonAnum", null],
-    ],
-);
+  "AirbusFBW/TerrainSelectedND1",
+  "AirbusFBW/TerrainSelectedND2",
 
-export const MPI_LDG_GEAR_REFS = new Map<string, number | null>(
-    [
-        ["AirbusFBW/GearLeverAnim", null],
-    ],
-);
+  "AirbusFBW/AutoBrkLo",
+  "AirbusFBW/AutoBrkMed",
+  "AirbusFBW/AutoBrkMax",
+  // "AirbusFBW/GearLeverAnim", // Not the one we want
 
-export const MPI_BRK_FAN_REFS = new Map<string, number | null>(
-    [
-        ["AirbusFBW/BrakeFanSwitchAnim", null],
-    ],
-);
+  // "AirbusFBW/BrakeFanSwitchAnim", // Not the one we want
 
-export const MPI_NW_STEERING_REFS = new Map<string, number | null>(
-    [
-        ["AirbusFBW/NWSSwitchAnum", null],
-    ],
-);
+  // "AirbusFBW/NWSSwitchAnim", // Not the one we want
+] as const;
+
+export const TARGET_DATAREFS_SET = new Set<string>(TARGET_DATAREFS);
