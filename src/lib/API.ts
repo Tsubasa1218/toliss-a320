@@ -62,7 +62,12 @@ export function SubscribeDataRefs(
       req_id: reqCount++,
       type: "dataref_subscribe_values",
       params: {
-        datarefs: datarefs.map((dr) => ({ id: dr.id })),
+        datarefs: datarefs.map((dr) => {
+          if (dr.name === "AirbusFBW/BrakeTemperatureArray") {
+            return { id: dr.id, index: [0, 1, 2, 3] };
+          }
+          return { id: dr.id };
+        }),
       },
     }));
 

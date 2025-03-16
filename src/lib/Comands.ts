@@ -38,13 +38,11 @@ export const MPI_AUTO_BRK_COMMANDS = [
 ] as const;
 
 export const MPI_LDG_GEAR_COMMANDS = [
-  /* Verify these are valid for Toliss */
-  //   "sim/flight_controls/landing_gear_down",
-  //   "sim/flight_controls/landing_gear_up",
+  "sim/flight_controls/landing_gear_toggle",
 ] as const;
 
 export const MPI_BRK_FAN_COMMANDS = [
-  //   "toliss_airbus/gear/brake_fan",
+  "toliss_airbus/gear/brake_fan",
 ] as const;
 
 export const MPI_NW_STEERING_COMMANDS = [

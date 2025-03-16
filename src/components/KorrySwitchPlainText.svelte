@@ -7,11 +7,11 @@
         children,
     }: { active: boolean; style: string; children: any } = $props();
 
-    let is_annunciator_test = getContext("annunciator_test");
+    const is_annunciator_test = getContext("annunciator_test");
 </script>
 
 <div
-    class="korry-switch-boxed-text {is_annunciator_test.test || active
+    class="korry-switch-plain-text {is_annunciator_test.test || active
         ? 'active'
         : ''}"
     {style}
@@ -20,20 +20,14 @@
 </div>
 
 <style lang="less">
-    .korry-switch-boxed-text {
+    .korry-switch-plain-text {
         text-transform: uppercase;
-        border-radius: 4px;
         padding: 4px;
         color: #161616;
-        border: 4px solid #161616;
 
         &.active {
             color: var(--color);
-            border-color: var(--color);
             text-shadow: 0 0 20px var(--color);
-            box-shadow:
-                0 0 20px var(--color),
-                inset 0 0 20px var(--color);
         }
     }
 </style>

@@ -1,10 +1,11 @@
 <script lang="ts">
+    const { onclick, children } = $props();
 </script>
 
-<button type="button" class="korry-switch">
+<button type="button" class="korry-switch" {onclick}>
     <div class="korry-switch-bevel">
         <div class="korry-switch-bg">
-            <slot />
+            {@render children()}
         </div>
     </div>
 </button>

@@ -19,11 +19,14 @@ export const TARGET_DATAREFS = [
   "AirbusFBW/AutoBrkLo",
   "AirbusFBW/AutoBrkMed",
   "AirbusFBW/AutoBrkMax",
-  // "AirbusFBW/GearLeverAnim", // Not the one we want
 
-  // "AirbusFBW/BrakeFanSwitchAnim", // Not the one we want
+  "AirbusFBW/BrakeFan",
+  "AirbusFBW/BrakeTemperatureArray",
 
-  // "AirbusFBW/NWSSwitchAnim", // Not the one we want
+  "AirbusFBW/GearLever",
+  "AirbusFBW/NoseGearInd",
+  "AirbusFBW/LeftGearInd",
+  "AirbusFBW/RightGearInd",
 ] as const;
 
 export const TARGET_DATAREFS_SET = new Set<string>(TARGET_DATAREFS);

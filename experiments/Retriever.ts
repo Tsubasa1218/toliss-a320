@@ -30,7 +30,10 @@ async function main_commands() {
   });
 
   const result = await retriever.batch([
-    "Commands related to the ECAM",
+    "Airbus Landing Gear",
+    "Landing Gear",
+    "Toliss Landing Gear",
+    "LDG Gear",
   ]);
 
   console.log(result);
@@ -62,13 +65,13 @@ async function main_datarefs() {
   });
 
   const result = await retriever.batch([
-    "Airbus ECAM Pages",
-    "Airbus ECP",
-    "Airbus Active ECAM",
+    "Airbus Landing Gear",
+    "Landing Gear",
+    "LDG GEAR",
   ]);
 
   console.log(result);
 }
 
-// main_commands();
-main_datarefs();
+main_commands();
+// main_datarefs();
