@@ -73,7 +73,7 @@ export function SubscribeDataRefs(
       };
 
       if (jsonData.type === "dataref_update_values") {
-        for (const [id, value] of Object.entries(jsonData)) {
+        for (const [id, value] of Object.entries(jsonData.data)) {
           callback(id, value);
         }
       }

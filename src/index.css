@@ -1,0 +1,35 @@
+@font-face {
+    font-family: "B612";
+    src: url(/B612-Regular.ttf);
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "B612";
+    src: url(/B612-Bold.ttf);
+    font-style: normal;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "B612";
+    src: url(/B612-Italic.ttf);
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "B612";
+    src: url(/B612-BoldItalic.ttf);
+    font-style: italic;
+    font-weight: bold;
+}
+
+* {
+    font-family: "B612" !important;
+}
+
+:root {
+    --airbus-green: #42bc5d;
+    --airbus-yellow: #bcb936;
+    --airbus-red: #632015;
+}
