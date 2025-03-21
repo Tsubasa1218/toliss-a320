@@ -5,25 +5,25 @@ export type Command = {
 };
 
 export const PEDESTAL_ECP_COMMANDS = [
-  //   "AirbusFBW/ECP/SelectEnginePage",
-  //   "AirbusFBW/ECP/SelectBleedPage",
-  //   "AirbusFBW/ECP/SelectPressPage",
-  //   "AirbusFBW/ECP/SelectElecACPage",
-  //   "AirbusFBW/ECP/SelectHydraulicPage",
-  //   "AirbusFBW/ECP/SelectFuelPage",
-  //   "AirbusFBW/ECP/SelectAPUPage",
-  //   "AirbusFBW/ECP/SelectConditionPage",
-  //   "AirbusFBW/ECP/SelectDoorOxyPage",
-  //   "AirbusFBW/ECP/SelectWheelPage",
-  //   "AirbusFBW/ECP/SelectFlightControlPage",
-  //   "AirbusFBW/ECP/SelectStatusPage",
-  //   "AirbusFBW/ECP/CaptainClear",
-  //   "AirbusFBW/ECP/CopilotClear",
+  "AirbusFBW/ECP/SelectEnginePage",
+  "AirbusFBW/ECP/SelectBleedPage",
+  "AirbusFBW/ECP/SelectPressPage",
+  "AirbusFBW/ECP/SelectElecACPage",
+  "AirbusFBW/ECP/SelectHydraulicPage",
+  "AirbusFBW/ECP/SelectFuelPage",
+  "AirbusFBW/ECP/SelectAPUPage",
+  "AirbusFBW/ECP/SelectConditioningPage",
+  "AirbusFBW/ECP/SelectDoorOxyPage",
+  "AirbusFBW/ECP/SelectWheelPage",
+  "AirbusFBW/ECP/SelectFlightControlPage",
+  "AirbusFBW/ECP/SelectStatusPage",
+  "AirbusFBW/ECP/CaptainClear",
+  "AirbusFBW/ECP/CopilotClear",
 
-  //   "AirbusFBW/EmerCancel",
-  //   "AirbusFBW/TOConfigPress",
-  //   "AirbusFBW/ECAMAll",
-  //   "AirbusFBW/ECAMRecall",
+  "AirbusFBW/EmerCancel",
+  "AirbusFBW/TOConfigPress",
+  "AirbusFBW/ECAMAll",
+  "AirbusFBW/ECAMRecall",
 ] as const;
 
 export const MPI_TERR_ON_ND_COMMANDS = [
@@ -58,3 +58,4 @@ export const TARGET_COMMANDS = [
   ...MPI_NW_STEERING_COMMANDS,
 ] as const;
 export const TARGET_COMMANDS_SET = new Set<string>(TARGET_COMMANDS);
+export type CommandName = (typeof TARGET_COMMANDS)[number];

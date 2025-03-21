@@ -21,6 +21,7 @@
         border: none;
         border-radius: 8px;
         background-color: black;
+        cursor: pointer;
     }
 
     .korry-switch-bevel {

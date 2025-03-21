@@ -11,22 +11,15 @@
   import {
     type Command,
     TARGET_COMMANDS_SET,
-    type TARGET_COMMANDS,
+    type CommandName,
   } from "./lib/Comands";
   import {
-    TARGET_DATAREFS,
     TARGET_DATAREFS_SET,
+    type DataRefName,
     type DataRef,
   } from "./lib/DataRefs";
-
-  import TerrainOnNd from "./switches/TerrainOnND.svelte";
-  import AutoBreak from "./switches/AutoBreak.svelte";
-  import BrakeFan from "./switches/BrakeFan.svelte";
-  import LandingGearIndicator from "./switches/LandingGearIndicator.svelte";
-  import LandingGearLever from "./levers/LandingGearLever.svelte";
-
-  type DataRefName = (typeof TARGET_DATAREFS)[number];
-  type CommandName = (typeof TARGET_COMMANDS)[number];
+  import Mip from "./panels/MIP.svelte";
+  import Ecp from "./panels/ECP.svelte";
 
   const valueStore = new SvelteMap<number, unknown>();
   const dataRefStore = new SvelteMap<number, DataRef>();
@@ -56,7 +49,7 @@
     }
   });
 
-  function getDaraRefValue<T>(dataRefName: DataRefName): T {
+  function getDataRefValue<T>(dataRefName: DataRefName): T {
     const id = dataRefIndex.get(dataRefName);
     const value = valueStore.get(id);
 
@@ -65,6 +58,7 @@
 
   const onclick = (commandName: CommandName) => () => {
     const command = commandIndex.get(commandName);
+    console.log(commandName, command);
 
     if (command) FireCommand(command);
   };
@@ -80,52 +74,5 @@
   }}>Test</button
 >
 
-<TerrainOnNd
-  onclick={onclick("toliss_airbus/dispcommands/TerrOnND1Toggle")}
-  value={getDaraRefValue<number>("AirbusFBW/TerrainSelectedND1")}
-/>
-<TerrainOnNd
-  onclick={onclick("toliss_airbus/dispcommands/TerrOnND2Toggle")}
-  value={getDaraRefValue<number>("AirbusFBW/TerrainSelectedND2")}
-/>
-
-<AutoBreak
-  onclick={onclick("AirbusFBW/AbrkLo")}
-  value={getDaraRefValue<number>("AirbusFBW/AutoBrkLo")}
-/>
-
-<AutoBreak
-  onclick={onclick("AirbusFBW/AbrkMed")}
-  value={getDaraRefValue<number>("AirbusFBW/AutoBrkMed")}
-/>
-
-<AutoBreak
-  onclick={onclick("AirbusFBW/AbrkMax")}
-  value={getDaraRefValue<number>("AirbusFBW/AutoBrkMax")}
-/>
-
-<BrakeFan
-  onclick={onclick("toliss_airbus/gear/brake_fan")}
-  value={[
-    getDaraRefValue<number>("AirbusFBW/BrakeFan"),
-    ...(getDaraRefValue<number[]>?.("AirbusFBW/BrakeTemperatureArray") ?? []),
-  ]}
-/>
-
-<LandingGearIndicator
-  onclick={() => {}}
-  value={getDaraRefValue<number>("AirbusFBW/LeftGearInd")}
-/>
-<LandingGearIndicator
-  onclick={() => {}}
-  value={getDaraRefValue<number>("AirbusFBW/NoseGearInd")}
-/>
-<LandingGearIndicator
-  onclick={() => {}}
-  value={getDaraRefValue<number>("AirbusFBW/RightGearInd")}
-/>
-
-<LandingGearLever
-  onclick={onclick("sim/flight_controls/landing_gear_toggle")}
-  value={getDaraRefValue<number>("AirbusFBW/GearLever")}
-/>
+<Mip {onclick} {getDataRefValue} />
+<Ecp {onclick} {getDataRefValue} />

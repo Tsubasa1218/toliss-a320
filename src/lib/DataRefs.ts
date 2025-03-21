@@ -11,7 +11,20 @@ export type DataRef = {
 };
 
 export const TARGET_DATAREFS = [
-  // "AirbusFBW/ECPAvail", // This is not the one we want
+  "AirbusFBW/SDPage",
+  "AirbusFBW/SDENG",
+  "AirbusFBW/SDBLEED",
+  "AirbusFBW/SDPRESS",
+  "AirbusFBW/SDELEC",
+  "AirbusFBW/SDHYD",
+  "AirbusFBW/SDFUEL",
+  "AirbusFBW/SDAPU",
+  "AirbusFBW/SDDOOR",
+  "AirbusFBW/SDWHEEL",
+  "AirbusFBW/SDFCTL",
+  "AirbusFBW/SDCOND",
+  "AirbusFBW/SDSTATUS",
+  "AirbusFBW/CLRillum",
 
   "AirbusFBW/TerrainSelectedND1",
   "AirbusFBW/TerrainSelectedND2",
@@ -30,3 +43,4 @@ export const TARGET_DATAREFS = [
 ] as const;
 
 export const TARGET_DATAREFS_SET = new Set<string>(TARGET_DATAREFS);
+export type DataRefName = (typeof TARGET_DATAREFS)[number];
