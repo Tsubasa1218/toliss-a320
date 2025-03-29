@@ -7,23 +7,17 @@
 </script>
 
 <div
-    class="korry-switch-warning-text {(is_annunciator_test.test || active) &&
-        'active'}"
+    class={is_annunciator_test.test || active
+        ? "text-airbus-yellow glow"
+        : "text-neutral-800"}
 >
     {@render children()}
 </div>
 
-<style lang="less">
-    .korry-switch-warning-text {
-        text-transform: uppercase;
-
-        color: #161616;
-
-        &.active {
-            color: var(--airbus-yellow);
-            text-shadow:
-                0 0 20px var(--airbus-red),
-                0 0 25px var(--airbus-red);
-        }
+<style>
+    .glow {
+        text-shadow:
+            0 0 20px var(--color-airbus-red),
+            0 0 25px var(--color-airbus-red);
     }
 </style>

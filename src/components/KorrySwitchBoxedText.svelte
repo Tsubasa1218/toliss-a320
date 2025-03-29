@@ -3,37 +3,26 @@
 
     const {
         active,
-        style,
+        activeColorClass,
         children,
-    }: { active: boolean; style: string; children: any } = $props();
+    }: { active: boolean; activeColorClass: string; children: any } = $props();
 
     let is_annunciator_test = getContext("annunciator_test");
 </script>
 
 <div
-    class="korry-switch-boxed-text {is_annunciator_test.test || active
-        ? 'active'
-        : ''}"
-    {style}
+    class="rounded-sm p-1 border-4 {is_annunciator_test.test || active
+        ? `${activeColorClass} border-current glow`
+        : 'text-neutral-800 border-neutral-800'}"
 >
     {@render children?.()}
 </div>
 
-<style lang="less">
-    .korry-switch-boxed-text {
-        text-transform: uppercase;
-        border-radius: 4px;
-        padding: 4px;
-        color: #161616;
-        border: 4px solid #161616;
-
-        &.active {
-            color: var(--color);
-            border-color: var(--color);
-            text-shadow: 0 0 20px var(--color);
-            box-shadow:
-                0 0 20px var(--color),
-                inset 0 0 20px var(--color);
-        }
+<style>
+    .glow {
+        text-shadow: 0 0 20px currentColor;
+        box-shadow:
+            0 0 20px currentColor,
+            inset 0 0 20px currentColor;
     }
 </style>

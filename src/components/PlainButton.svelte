@@ -7,26 +7,11 @@
     const { children, style, onclick }: PlainButtonProps = $props();
 </script>
 
-<button type="button" class="ecp-switch" {style} {onclick}>
+<button
+    type="button"
+    class="rounded-md bg-neutral-900 text-white text-center font-semibold cursor-pointer w-16 py-2 text-base leading-none"
+    {style}
+    {onclick}
+>
     {@render children()}
 </button>
-
-<style lang="less">
-    .ecp-switch {
-        box-sizing: border-box;
-        border: none;
-        border-radius: 8px;
-        padding-block: 8px;
-        padding-inline: 0;
-        width: 60px;
-
-        background-color: #1f1f1f;
-
-        color: white;
-        text-transform: capitalize;
-        text-align: center;
-        font-weight: bold;
-
-        cursor: pointer;
-    }
-</style>

@@ -13,10 +13,10 @@
 <KorrySwitch {onclick}>
     <KorrySwitchPlainText
         active={value === UNLOCKED || value === BOTH}
-        style="--color: var(--airbus-red)">UNLK</KorrySwitchPlainText
+        activeColorClass="text-airbus-red">UNLK</KorrySwitchPlainText
     >
     <KorrySwitchDownArrow
         active={value === DOWN || value === BOTH}
-        style="--color: var(--airbus-green);"
+        activeColorClass="stroke-airbus-green"
     />
 </KorrySwitch>

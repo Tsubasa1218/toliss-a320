@@ -40,6 +40,12 @@ export const TARGET_DATAREFS = [
   "AirbusFBW/NoseGearInd",
   "AirbusFBW/LeftGearInd",
   "AirbusFBW/RightGearInd",
+
+  "AirbusFBW/TCASStatus",
+  "AirbusFBW/XPDRTCASMode",
+  "AirbusFBW/XPDRTCASAltSelect",
+  "AirbusFBW/XPDRSystem",
+  "AirbusFBW/XPDRPower",
 ] as const;
 
 export const TARGET_DATAREFS_SET = new Set<string>(TARGET_DATAREFS);

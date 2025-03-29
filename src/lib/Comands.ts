@@ -4,7 +4,7 @@ export type Command = {
   description: string;
 };
 
-export const PEDESTAL_ECP_COMMANDS = [
+const PEDESTAL_ECP_COMMANDS = [
   "AirbusFBW/ECP/SelectEnginePage",
   "AirbusFBW/ECP/SelectBleedPage",
   "AirbusFBW/ECP/SelectPressPage",
@@ -26,31 +26,45 @@ export const PEDESTAL_ECP_COMMANDS = [
   "AirbusFBW/ECAMRecall",
 ] as const;
 
-export const MPI_TERR_ON_ND_COMMANDS = [
+const PEDESTAL_TRANSPONDER_COMMANDS = [
+  "AirbusFBW/ATCCodeKey1",
+  "AirbusFBW/ATCCodeKey2",
+  "AirbusFBW/ATCCodeKey3",
+  "AirbusFBW/ATCCodeKey4",
+  "AirbusFBW/ATCCodeKey5",
+  "AirbusFBW/ATCCodeKey6",
+  "AirbusFBW/ATCCodeKey7",
+  "AirbusFBW/ATCCodeKey0",
+  "AirbusFBW/ATCCodeKeyCLR",
+] as const;
+
+const MPI_TERR_ON_ND_COMMANDS = [
   "toliss_airbus/dispcommands/TerrOnND1Toggle",
   "toliss_airbus/dispcommands/TerrOnND2Toggle",
 ] as const;
 
-export const MPI_AUTO_BRK_COMMANDS = [
+const MPI_AUTO_BRK_COMMANDS = [
   "AirbusFBW/AbrkLo",
   "AirbusFBW/AbrkMed",
   "AirbusFBW/AbrkMax",
 ] as const;
 
-export const MPI_LDG_GEAR_COMMANDS = [
+const MPI_LDG_GEAR_COMMANDS = [
   "sim/flight_controls/landing_gear_toggle",
 ] as const;
 
-export const MPI_BRK_FAN_COMMANDS = [
+const MPI_BRK_FAN_COMMANDS = [
   "toliss_airbus/gear/brake_fan",
 ] as const;
 
-export const MPI_NW_STEERING_COMMANDS = [
+const MPI_NW_STEERING_COMMANDS = [
   //   "sim/flight_controls/nwheel_steer_toggle",
 ] as const;
 
 export const TARGET_COMMANDS = [
   ...PEDESTAL_ECP_COMMANDS,
+  ...PEDESTAL_TRANSPONDER_COMMANDS,
+
   ...MPI_TERR_ON_ND_COMMANDS,
   ...MPI_AUTO_BRK_COMMANDS,
   ...MPI_LDG_GEAR_COMMANDS,

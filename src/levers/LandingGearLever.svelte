@@ -27,7 +27,7 @@
     </div>
 </div>
 
-<style lang="less">
+<!-- <style lang="less">
     .landing-gear {
         display: flex;
         height: 300px;
@@ -71,4 +71,4 @@
             text-align: center;
         }
     }
-</style>
+</style> -->

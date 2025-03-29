@@ -3,31 +3,23 @@
 
     const {
         active,
-        style,
+        activeColorClass,
         children,
-    }: { active: boolean; style: string; children: any } = $props();
+    }: { active: boolean; activeColorClass: string; children: any } = $props();
 
     const is_annunciator_test = getContext("annunciator_test");
 </script>
 
 <div
-    class="korry-switch-plain-text {is_annunciator_test.test || active
-        ? 'active'
-        : ''}"
-    {style}
+    class={is_annunciator_test.test || active
+        ? `${activeColorClass} glow`
+        : "text-neutral-800 border-neutral-800"}
 >
     {@render children?.()}
 </div>
 
-<style lang="less">
-    .korry-switch-plain-text {
-        text-transform: uppercase;
-        padding: 4px;
-        color: #161616;
-
-        &.active {
-            color: var(--color);
-            text-shadow: 0 0 20px var(--color);
-        }
+<style>
+    .glow {
+        text-shadow: 0 0 20px currentColor;
     }
 </style>

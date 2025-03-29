@@ -10,6 +10,6 @@
     <KorrySwitchFaultText active={false}>FAULT</KorrySwitchFaultText>
     <KorrySwitchBoxedText
         active={value === 1}
-        style="--color: var(--airbus-green);">ON</KorrySwitchBoxedText
+        activeColorClass="text-airbus-green">ON</KorrySwitchBoxedText
     >
 </KorrySwitch>

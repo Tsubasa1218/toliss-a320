@@ -1,39 +1,40 @@
+@import "tailwindcss";
+
 @font-face {
     font-family: "B612";
-    src: url(/B612-Regular.ttf);
+    src: url("/B612-Regular.ttf");
     font-style: normal;
 }
 
 @font-face {
     font-family: "B612";
-    src: url(/B612-Bold.ttf);
+    src: url("/B612-Bold.ttf");
     font-style: normal;
     font-weight: bold;
 }
 
 @font-face {
     font-family: "B612";
-    src: url(/B612-Italic.ttf);
+    src: url("/B612-Italic.ttf");
     font-style: italic;
 }
 
 @font-face {
     font-family: "B612";
-    src: url(/B612-BoldItalic.ttf);
+    src: url("/B612-BoldItalic.ttf");
     font-style: italic;
     font-weight: bold;
 }
 
-* {
-    font-family: "B612" !important;
-}
+@theme {
+    --font-airbus: "B612";
 
-:root {
-    --airbus-green: #42bc5d;
-    --airbus-yellow: #bcb936;
-    --airbus-red: #632015;
-    --airbus-blue: #208dce;
-    --airbus-backlight: #d2b19e;
-    --airbus-fg-blue: #2a3945;
-    --airbus-bg-blue: #2b4259;
+    --color-airbus-green: #42bc5d;
+    --color-airbus-yellow: #bcb936;
+    --color-airbus-red: #632015;
+    --color-airbus-blue: #208dce;
+    --color-airbus-backlight: #d2b19e;
+    
+    --color-airbus-fg-blue: #2a3945;
+    --color-airbus-bg-blue: #2b4259;
 }

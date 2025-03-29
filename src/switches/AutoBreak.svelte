@@ -12,12 +12,12 @@
 <KorrySwitch {onclick}>
     <KorrySwitchPlainText
         active={value === DECEL}
-        style="--color: var(--airbus-green)"
+        activeColorClass="text-airbus-green"
     >
         DECEL
     </KorrySwitchPlainText>
     <KorrySwitchBoxedText
         active={value === ACTIVE || value === DECEL}
-        style="--color: var(--airbus-blue);">ON</KorrySwitchBoxedText
+        activeColorClass="text-airbus-blue">ON</KorrySwitchBoxedText
     >
 </KorrySwitch>

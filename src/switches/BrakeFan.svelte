@@ -13,7 +13,7 @@
     <KorrySwitchFaultText active={value.slice(1).some((temp) => temp > 100)}
         >HOT</KorrySwitchFaultText
     >
-    <KorrySwitchBoxedText active={value[0] === 1} style="--color: white;"
+    <KorrySwitchBoxedText active={value[0] === 1} activeColorClass="text-white"
         >ON</KorrySwitchBoxedText
     >
 </KorrySwitch>

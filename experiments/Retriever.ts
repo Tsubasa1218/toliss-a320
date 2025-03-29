@@ -5,8 +5,8 @@ import { OllamaEmbeddings } from "@langchain/ollama";
 import commandsJson from "./commands.json" with { type: "json" };
 import datarefsJson from "./datarefs.json" with { type: "json" };
 
-async function main_commands() {
-  const commandDocs = commandsJson.data.map((data) =>
+function main_commands() {
+  return commandsJson.data.map((data) =>
     new Document({
       pageContent: data.description,
       id: data.id.toString(),
@@ -15,32 +15,10 @@ async function main_commands() {
       },
     })
   );
-
-  const embeddings = new OllamaEmbeddings({
-    model: "nomic-embed-text",
-  });
-
-  const vectorStore = new MemoryVectorStore(embeddings);
-
-  await vectorStore.addDocuments(commandDocs);
-
-  const retriever = vectorStore.asRetriever({
-    searchType: "similarity",
-    k: 10,
-  });
-
-  const result = await retriever.batch([
-    "Airbus Landing Gear",
-    "Landing Gear",
-    "Toliss Landing Gear",
-    "LDG Gear",
-  ]);
-
-  console.log(result);
 }
 
-async function main_datarefs() {
-  const commandDocs = datarefsJson.data.map((data) =>
+function main_datarefs() {
+  return datarefsJson.data.map((data) =>
     new Document({
       pageContent: data.name,
       id: data.id.toString(),
@@ -50,6 +28,16 @@ async function main_datarefs() {
       },
     })
   );
+}
+
+(async () => {
+  const lookups = [
+    // "toliss TCAS",
+    "XPDR",
+    "Power",
+    // "Transponder",
+    // "TCAS",
+  ];
 
   const embeddings = new OllamaEmbeddings({
     model: "nomic-embed-text",
@@ -57,21 +45,15 @@ async function main_datarefs() {
 
   const vectorStore = new MemoryVectorStore(embeddings);
 
-  await vectorStore.addDocuments(commandDocs);
+  await vectorStore.addDocuments(main_commands());
+  // await vectorStore.addDocuments(main_datarefs());
 
   const retriever = vectorStore.asRetriever({
     searchType: "similarity",
-    k: 10,
+    k: 15,
   });
 
-  const result = await retriever.batch([
-    "Airbus Landing Gear",
-    "Landing Gear",
-    "LDG GEAR",
-  ]);
+  const result = await retriever.batch(lookups);
 
   console.log(result);
-}
-
-main_commands();
-// main_datarefs();
+})();

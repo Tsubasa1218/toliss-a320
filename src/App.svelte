@@ -20,6 +20,12 @@
   } from "./lib/DataRefs";
   import Mip from "./panels/MIP.svelte";
   import Ecp from "./panels/ECP.svelte";
+  import Xpdr from "./panels/XPDR.svelte";
+
+  const PANELS = ["None", "ECP", "XPDR", "MIP"] as const;
+  type Panels = (typeof PANELS)[number];
+
+  let currentPanel = $state<Panels>("None");
 
   const valueStore = new SvelteMap<number, unknown>();
   const dataRefStore = new SvelteMap<number, DataRef>();
@@ -67,6 +73,21 @@
   setContext("annunciator_test", testAllSwitches);
 </script>
 
+<nav class="w-dvh">
+  <ol class="flex text-red-500">
+    {#each PANELS as panelName}
+      <li>
+        <button
+          type="button"
+          onclick={() => {
+            currentPanel = panelName;
+          }}>{panelName}</button
+        >
+      </li>
+    {/each}
+  </ol>
+</nav>
+
 <button
   style="display: block;"
   onclick={() => {
@@ -74,5 +95,6 @@
   }}>Test</button
 >
 
+<Xpdr {onclick} {getDataRefValue} />
 <Mip {onclick} {getDataRefValue} />
 <Ecp {onclick} {getDataRefValue} />
