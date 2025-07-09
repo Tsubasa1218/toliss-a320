@@ -26,7 +26,7 @@
     font-weight: bold;
 }
 
-@theme {
+@theme {   
     --font-airbus: "B612";
 
     --color-airbus-green: #42bc5d;
@@ -37,4 +37,5 @@
     
     --color-airbus-fg-blue: #2a3945;
     --color-airbus-bg-blue: #2b4259;
+
 }

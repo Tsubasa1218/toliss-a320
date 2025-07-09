@@ -125,6 +125,10 @@
         grid-template-rows: repeat(5, auto);
         grid-template-columns: repeat(6, auto);
         grid-template-areas: ". to-config . . emer ." "eng bleed press elec hyd fuel" "apu cond door wheel fctl all" "clr-l . sts rcl . clr-r";
-        gap: 6px;
+        gap: 0.5rem;
+        padding: 1rem;
+        width: fit-content;
+
+        background-color: var(--color-airbus-bg-blue);
     }
 </style>

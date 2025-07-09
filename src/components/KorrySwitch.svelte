@@ -15,17 +15,3 @@
         </div>
     </div>
 </button>
-
-<!-- <style lang="less">
-    .korry-switch-bevel {
-        box-shadow:
-            0px 0px 6px #1f1f1f,
-            -0px -0px 6px #1f1f1f;
-    }
-
-    .korry-switch-bg {
-        box-shadow:
-            inset 5px 5px 10px #0d0d0d,
-            inset -5px -5px 10px #0d0d0d;
-    }
-</style> -->

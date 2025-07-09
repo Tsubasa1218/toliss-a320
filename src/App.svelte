@@ -73,12 +73,13 @@
   setContext("annunciator_test", testAllSwitches);
 </script>
 
-<nav class="w-dvh">
-  <ol class="flex text-red-500">
+<nav class="bg-black text-white p-2">
+  <ol class="flex space-x-2">
     {#each PANELS as panelName}
       <li>
         <button
           type="button"
+          class="font-bold text-lg"
           onclick={() => {
             currentPanel = panelName;
           }}>{panelName}</button
@@ -89,12 +90,18 @@
 </nav>
 
 <button
-  style="display: block;"
+  class="block border border-black p-2"
   onclick={() => {
     testAllSwitches.test = !testAllSwitches.test;
   }}>Test</button
 >
 
-<Xpdr {onclick} {getDataRefValue} />
-<Mip {onclick} {getDataRefValue} />
-<Ecp {onclick} {getDataRefValue} />
+{#if currentPanel === "ECP" || currentPanel === "None"}
+  <Ecp {onclick} {getDataRefValue} />
+{/if}
+{#if currentPanel === "MIP" || currentPanel === "None"}
+  <Mip {onclick} {getDataRefValue} />
+{/if}
+{#if currentPanel === "XPDR" || currentPanel === "None"}
+  <Xpdr {onclick} {getDataRefValue} />
+{/if}
